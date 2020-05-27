@@ -15,6 +15,7 @@
  */
 package org.wso2.performance.common.netty.echo;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -32,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
+import static io.netty.buffer.Unpooled.*;
 
 /**
  * Handler implementation for the echo server and http/2 echo server with content aggregation.
@@ -83,7 +85,8 @@ public class EchoHttpServerHandler extends SimpleChannelInboundHandler<FullHttpR
     }
 
     private static FullHttpResponse buildFullHttpResponse(FullHttpRequest request) {
-        FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK, request.content().copy());
+        ByteBuf heapBuffer    = buffer(128);
+        FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK, heapBuffer);
         String contentType = request.headers().get(HttpHeaderNames.CONTENT_TYPE);
         if (contentType != null) {
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, contentType);
