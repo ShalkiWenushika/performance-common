@@ -29,6 +29,7 @@ import io.netty.handler.codec.http.HttpHeaderValues;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.handler.codec.http2.HttpConversionUtil;
 
+import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
@@ -85,7 +86,7 @@ public class EchoHttpServerHandler extends SimpleChannelInboundHandler<FullHttpR
     }
 
     private static FullHttpResponse buildFullHttpResponse(FullHttpRequest request) {
-        ByteBuf heapBuffer    = buffer(128);
+        ByteBuf heapBuffer = buffer(128);
         FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK, heapBuffer);
         String contentType = request.headers().get(HttpHeaderNames.CONTENT_TYPE);
         if (contentType != null) {
