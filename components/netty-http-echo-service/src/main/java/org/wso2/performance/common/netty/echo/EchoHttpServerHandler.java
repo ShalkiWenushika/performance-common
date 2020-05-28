@@ -29,12 +29,11 @@ import io.netty.handler.codec.http.HttpHeaderValues;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.handler.codec.http2.HttpConversionUtil;
 
-import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
+import static io.netty.buffer.Unpooled.buffer;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
-import static io.netty.buffer.Unpooled.*;
 
 /**
  * Handler implementation for the echo server and http/2 echo server with content aggregation.
