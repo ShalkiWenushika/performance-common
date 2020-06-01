@@ -61,5 +61,6 @@ fi
 
 for s in ${payloads[*]}; do
     echo "Generating ${s}B file"
-    java -jar $script_dir/payload-generator-${performance.common.version}.jar --size $s --payload-type ${payload_type}
+    fallocate -l $s ${s}B.json
+    #java -jar $script_dir/payload-generator-${performance.common.version}.jar --size $s --payload-type ${payload_type}
 done
