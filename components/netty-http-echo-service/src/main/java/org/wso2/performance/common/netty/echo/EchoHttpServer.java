@@ -163,7 +163,7 @@ public final class EchoHttpServer {
                             p.addLast(sslCtx.newHandler(ch.alloc()));
                         }
                         p.addLast(new HttpServerCodec());
-                        p.addLast("aggregator", new HttpObjectAggregator(1048576));
+                        p.addLast("aggregator", new HttpObjectAggregator(1932735283));
                         p.addLast(new EchoHttpServerHandler(sleepTime, false));
                     }
                 });

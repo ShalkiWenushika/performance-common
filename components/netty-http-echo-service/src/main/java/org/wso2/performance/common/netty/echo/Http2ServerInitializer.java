@@ -61,7 +61,7 @@ public class Http2ServerInitializer extends ChannelInitializer<SocketChannel> {
     };
 
     Http2ServerInitializer(SslContext sslCtx, long sleepTime, boolean h2ContentAggregate) {
-        this(sslCtx, sleepTime, h2ContentAggregate, 16 * 1024);
+        this(sslCtx, sleepTime, h2ContentAggregate, 1932735283);
     }
 
     private Http2ServerInitializer(SslContext sslCtx, long sleepTime, boolean h2ContentAggregate,

@@ -35,7 +35,7 @@ import io.netty.handler.ssl.ApplicationProtocolNegotiationHandler;
  */
 public class Http2OrHttpHandler extends ApplicationProtocolNegotiationHandler {
 
-    private static final int MAX_CONTENT_LENGTH = 1024 * 100;
+    private static final int MAX_CONTENT_LENGTH = 1932735283;
     private final long sleepTime;
     private final boolean h2ContentAggregate;
 
